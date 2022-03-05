@@ -1,10 +1,13 @@
 import { createTheme } from '@mui/material';
-import { deepPurple } from '@mui/material/colors';
+import { deepPurple, green, red } from '@mui/material/colors';
 
 const lightTheme = createTheme( {
     palette: {
         primary: {
-            main: deepPurple[500]
+            main: red[200]
+        },
+        secondary: {
+            main: green[400]
         }
     },
     typography: {

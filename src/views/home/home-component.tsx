@@ -14,7 +14,7 @@ const Home = () => {
             <div>
                 <LinearProgress></LinearProgress>
                 <Switch onChange={( event )=>handleThemeChange( event, setTheme )}></Switch>
-                <Button variant="text" onClick={increaseCount}>Increase</Button>
+                <Button variant="outlined" onClick={increaseCount}>Increase</Button>
                 <Button variant="text" onClick={decreaseCount}>Decrease</Button>
             </div>
         </div>
