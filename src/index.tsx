@@ -1,19 +1,23 @@
-import { ThemeProvider } from '@emotion/react';
+import './assets/fonts/iAWriterQuattroS-Regular.woff';
+import './assets/fonts/iAWriterQuattroS-Italic.woff';
+import './assets/fonts/iAWriterQuattroS-Bold.woff';
+import './assets/fonts/iAWriterQuattroS-BoldItalic.woff';
+import './global.scss';
+
+import { BrowserRouter } from 'react-router-dom';
+import CustomRoutes from './assets/routes/routes';
+import CustomThemeProvider from './utils/providers/custom-theme-provider';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
-import Home from './views/home/home-component';
-import { Button } from '@mui/material';
-import { Dir } from 'fs';
-import NavBar from './views/nav-bar/nav-bar-component';
-import CustomThemeProvider from './utils/providers/custom-theme-provider';
 
 
 ReactDOM.render(
     <React.StrictMode>
         <CustomThemeProvider>
-            <NavBar></NavBar>
-            <Home></Home>
+            <BrowserRouter>    
+                <CustomRoutes></CustomRoutes>
+            </BrowserRouter>
         </CustomThemeProvider>
     </React.StrictMode>,
     document.getElementById( 'root' )

@@ -1,16 +1,7 @@
 import numberWithCommas from './home-helper';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { CustomThemeContext } from '../../utils/providers/custom-theme-provider';
 
-const useThemeChange = () =>{
-    const [isLightTheme, setState] = useState( true );
-
-    const changeTheme = () => setState( !isLightTheme );
-
-    return {
-        isLightTheme: isLightTheme,
-        changeTheme
-    };
-};
 
 const useCounter = () => {
     const [count, setCount] = useState( 9999 );
@@ -25,4 +16,14 @@ const useCounter = () => {
     };
 };
 
-export { useCounter, useThemeChange };
+
+const handleThemeChange = ( event: { target: { checked: any; };}, setTheme: any ) => {
+    const { checked } = event.target;
+    if ( checked ) {
+        setTheme( 'dark' );
+    } else {
+        setTheme( 'light' );
+    }
+};
+
+export { useCounter, handleThemeChange };

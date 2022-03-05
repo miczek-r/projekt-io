@@ -8,14 +8,14 @@ const lightTheme = createTheme( {
         }
     },
     typography: {
-        fontFamily: 'Times New Roman',
+        fontFamily: 'Fipps,iA Quattro',
         fontSize: 15
     },
     components: {
         MuiCssBaseline: {
             styleOverrides: {
                 body: {
-                    transition: 'all 0.25s'
+                    transition: 'all 0.2s'
                 }
             }
         }

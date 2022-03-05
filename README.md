@@ -1,5 +1,5 @@
-#[Fajna rzecz](https://www.digitalocean.com/community/tutorials/workflow-auto-eslinting)
-#[Tego używamy](https://mui.com/getting-started/supported-components/)
+# [Fajna rzecz](https://www.digitalocean.com/community/tutorials/workflow-auto-eslinting)
+# [Tego używamy](https://mui.com/getting-started/supported-components/)
 
 # Getting Started with Create React App
 
