@@ -1,0 +1,46 @@
+.cloud{
+    position: absolute;
+    animation: cloud-flow 120s linear forwards;
+}
+
+.cloud-child{
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    display: flex;
+    background-color: rgba(255,255,255,0.9);
+    transform: rotate(210deg) skew(-30deg) scaleY(0.864);
+    animation: bobbing 2s ease-in-out alternate infinite;
+    bottom: -100px;
+}
+
+.cloud-child::before{
+    content: '';
+    position: absolute;
+    display: block;
+    height: 10px;
+    width: 100px;
+    background-color: rgba(200,200,200,0.9);
+    transform: skew(45deg) translate(4px, -10px);
+}
+
+.cloud-child::after{
+    content: '';
+    position: absolute;
+    display: block;
+    height: 10px;
+    width: 40px;
+    background-color: rgba(150, 150, 150, 0.9);
+    transform: translate(-25px, 10px) rotate(90deg) skew(-45deg);
+}
+
+@keyframes cloud-flow {
+    from{
+        transform:  translate(0, 0);
+    }
+    to{
+        transform:  translate(calc(-100vh - 100vw), calc(-100vh - 100vw));
+        
+    }
+}
+

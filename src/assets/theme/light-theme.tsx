@@ -1,5 +1,6 @@
 import { createTheme } from '@mui/material';
-import { deepPurple, green, red } from '@mui/material/colors';
+import { blue, deepPurple, green, red } from '@mui/material/colors';
+import { color } from '@mui/system';
 
 const lightTheme = createTheme( {
     palette: {
@@ -8,6 +9,9 @@ const lightTheme = createTheme( {
         },
         secondary: {
             main: green[400]
+        },
+        background: {
+            default: blue[100]
         }
     },
     typography: {
@@ -18,7 +22,8 @@ const lightTheme = createTheme( {
         MuiCssBaseline: {
             styleOverrides: {
                 body: {
-                    transition: 'all 0.2s'
+                    transition: 'all 0.2s',
+                    color: green
                 }
             }
         }

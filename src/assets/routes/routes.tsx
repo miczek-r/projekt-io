@@ -12,7 +12,7 @@ import TileView from '../../views/tile-view/tile-view-component';
 const CustomRoutes = () => 
     <Routes>
         <Route path='/' element={<NavBar />} key='create'>
-            <Route path='/' element={<CityView />}/>  
+            <Route path='/' element={<CityView test={''} />}/>  
             <Route path='main' element={<MainScreen />}/>  
             <Route path='/home' element={<Home />}/>  
             <Route path='tile' element={<TileView />}/>  

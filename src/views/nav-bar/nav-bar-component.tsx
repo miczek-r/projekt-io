@@ -5,8 +5,8 @@ const NavBar = () => {
     const navigator = useNavigate();
 
     return (
-        <div>
-            <AppBar position="static">
+        <div className='nav-bar'>
+            <AppBar position="static" className='nav-bar'>
                 <Grid container padding='1rem' justifyContent='center' alignItems='center'>
                     <Typography onClick={() => navigator( '/' )}>City</Typography>
                 </Grid>

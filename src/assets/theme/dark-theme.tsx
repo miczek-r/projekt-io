@@ -16,6 +16,13 @@ const darkTheme = createTheme( {
                     transition: 'all 0.2s'
                 }
             }
+        },
+        MuiAppBar: {
+            styleOverrides: {
+                root: {
+                    zIndex: 99
+                }
+            }
         }
     }
 } );
