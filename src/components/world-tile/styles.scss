@@ -1,0 +1,61 @@
+$tile-size: 250px;
+$side-size: 25px;
+
+.world-tile{
+    width: $tile-size;
+    height: $tile-size;
+    background-color: #ffffff;
+    transform: rotate(210deg) skew(-30deg) scaleY(0.864);
+    animation: bobbing 2s ease-in-out alternate infinite;
+   
+
+    .tile-top{
+        height: 100%;
+        display: grid;
+        grid-gap: 0.5rem;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    .tile-front{
+        height: $side-size;
+        background: #ffffff;
+        transform: rotate(0deg) scaleY(1.0) translate(-$side-size, calc(-#{$tile-size} - #{$side-size})) skew(45deg);
+        transform-origin: 0 0;
+    }
+
+    .tile-side{
+        height: $side-size;
+        background: #d9d4d4;
+        transform: rotate(90deg) scaleY(1.0) translate(calc(-#{$side-size} - #{$tile-size}), ) skew(-45deg);
+        transform-origin: 0 0;
+    }
+
+    
+
+    .sub-tile{
+        background-color: #90be6d;
+        
+        box-shadow: -0 -0 0 rgba(0,0,0,0.7);
+        transition: .25s ease-in-out 0s;
+    }
+
+    .sub-tile:hover{
+        background-color: lighten($color: #90be6d, $amount: 10);
+        transform: translate(5px, 5px);
+        transition: .25s linear 0s;
+
+        box-shadow: -5px -5px 5px rgba(0,0,0,0.7);
+    }
+
+    @keyframes bobbing {
+        from{
+            transform: rotate(210deg) skew(-30deg) scaleY(0.864) translate(0px, 0px);
+        }
+        
+        to{
+            transform: rotate(210deg) skew(-30deg) scaleY(0.864) translate(5px, 5px);
+        }
+    }
+
+}

@@ -1,0 +1,34 @@
+.loading-screen{
+    text-align: center;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+
+    div{
+        display:flex;
+        margin-top: 1rem;
+    }
+
+
+
+.siur {
+    font-size: 2rem;
+    width: max-content;
+    animation: 1.5s infinite rotation ease-in-out;
+    margin-bottom: 3rem;
+}
+
+@keyframes rotation {
+    0%,25% {
+        transform:rotate(0deg);
+    }
+    
+    100% {
+        transform:rotate(359deg);
+    }
+}
+}

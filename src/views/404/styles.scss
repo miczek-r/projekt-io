@@ -19,11 +19,12 @@
 }
 
 .siur{
+    line-height: 1;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-    animation: 1s ease-in-out infinite rotation alternate;
+    animation: 1s ease-in-out infinite fuck alternate;
 }
 
-@keyframes rotation {
+@keyframes fuck {
     from {
         transform:translateX(0px);
     }

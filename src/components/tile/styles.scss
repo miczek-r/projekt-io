@@ -1,0 +1,36 @@
+$single-tile-size: 100px;
+$single-side-size: 15px;
+
+.single-tile{
+    width: $single-tile-size;
+    height: $single-tile-size;
+    background-color: #90be6d;
+    transform: rotate(210deg) skew(-30deg) scaleY(0.864);
+    animation: bobbing 2s ease-in-out alternate infinite;
+   
+
+    .single-tile-top{
+        height: 100%;
+        display: grid;
+        grid-gap: 0.5rem;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    .single-tile-front{
+        height: $single-side-size;
+        background: #ffffff;
+        transform: rotate(0deg) scaleY(1.0) translate(-$single-side-size, calc(-#{$single-tile-size} - #{$single-side-size})) skew(45deg);
+        transform-origin: 0 0;
+    }
+
+    .single-tile-side{
+        height: $single-side-size;
+        background: #d9d4d4;
+        transform: rotate(90deg) scaleY(1.0) translate(calc(-#{$single-side-size} - #{$single-tile-size}), ) skew(-45deg);
+        transform-origin: 0 0;
+    }
+
+    
+
+}
