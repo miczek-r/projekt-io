@@ -7,6 +7,7 @@ import NotFound from '../../views/404/404';
 import LoadingScreen from '../../views/loding-screen/loding-screen';
 import CityView from '../../views/city-view/city-view-component';
 import TileView from '../../views/tile-view/tile-view-component';
+import Cloud from '../../components/cloud/cloud';
 
 
 const CustomRoutes = () => 
@@ -18,6 +19,7 @@ const CustomRoutes = () =>
             <Route path='tile' element={<TileView />}/>  
         </Route>
         <Route path='loading' element={<LoadingScreen />}/>  
+        <Route path='cloud' element={<Cloud startingPosition={50} />}/>  
         <Route path='*' element = {<NotFound/>}/>
         
     </Routes>

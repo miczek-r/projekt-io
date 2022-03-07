@@ -5,6 +5,7 @@ interface IProps{
     startingPosition: number;
 }
 
+
 class Cloud extends React.Component<IProps> {
 
     render () {
@@ -14,7 +15,21 @@ class Cloud extends React.Component<IProps> {
         'bottom': this.props.startingPosition 
         >= window.innerWidth 
             ? this.props.startingPosition - window.innerWidth : -40, 'zIndex': 1 }}>
-            <div className='cloud-child'></div>
+            <div className='cloud-child'
+                style={{
+                    'width': Math.floor(
+                        Math.random()
+                        * ( 150 - 50 )
+                        + 50
+                    ),
+                    'height': Math.floor(
+                        Math.random()
+                        * ( 150 - 50 )
+                        + 50
+                    )
+                }}
+            
+            ></div>
         </div>;
     }
        

@@ -29,7 +29,7 @@ class CityView extends React.Component<IProps, IState> {
                 }></Cloud>]
             } ) );
             this.loop();
-        }, 10000 );
+        }, 5000 );
     }
 
     previousCloudPosition = 0;
