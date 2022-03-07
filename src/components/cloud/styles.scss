@@ -1,12 +1,13 @@
 .cloud{
     position: absolute;
     animation: cloud-flow 60s linear forwards;
+    pointer-events: none;
 }
 
 .cloud-child{
     position: absolute;
     display: flex;
-    background-color: rgba(255,255,255,0.9);
+    background-color: rgba(255, 255, 255, 0.65);  
     transform: rotate(210deg) skew(-30deg) scaleY(0.864);
     animation: bobbing 2s ease-in-out alternate infinite;
 }
@@ -17,7 +18,7 @@
     display: block;
     height: 10px;
     width: inherit;
-    background-color: rgba(200,200,200,0.9);
+    background-color: rgba(220, 220, 240, 0.65);  
     transform: skew(45deg) translate(4px, -10px);
 }
 
@@ -27,7 +28,7 @@
     display: block;
     height: inherit;
     width: 10px;
-    background-color: rgba(150, 150, 150, 0.9);
+    background-color: rgba(98, 98, 157, 0.65);  
     transform-origin: 100% -30%;
     transform: skewY(45deg) translate(-10px, 10px);
 }
@@ -38,7 +39,6 @@
     }
     to{
         transform:  translate(calc(-100vh - 100vw), calc(-100vh - 100vw));
-        
     }
 }
 
