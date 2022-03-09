@@ -5,8 +5,11 @@ import Tile from '../../components/tile/tile-component';
 import { Box } from '@mui/system';
 import CustomScroll from 'react-custom-scroll';
 import { Scrollbar } from 'react-scrollbars-custom';
+import React from 'react';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 
-const TileView = () => {
+const TileView: React.FunctionComponent = () =>{
+    const navigator = useNavigate();
     return (
         <Grid container direction='column' className='tile-view'
             justifyContent='center' alignItems='center'>
@@ -47,7 +50,8 @@ const TileView = () => {
                         </Grid>
                         <List>
                             
-                            <ListItemButton component="a" href="#simple-list">
+                            <ListItemButton component="a" href="#simple-list"
+                                onClick={() => navigator( '/game' )}>
                                 <Grid container justifyContent='space-between'>
                                     <ListItemText primary="Bank" secondary='300 dolanów'/>
                                     <ListItemText style={{ textAlign: 'right' }}
@@ -138,5 +142,6 @@ const TileView = () => {
         </Grid>
     );
 };
+
 
 export default TileView;

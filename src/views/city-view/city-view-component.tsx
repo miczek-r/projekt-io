@@ -2,9 +2,10 @@ import './styles.scss';
 import WorldTile from '../../components/world-tile/world-tile-component';
 import Cloud from '../../components/cloud/cloud';
 import React from 'react';
+import { useTheme } from '@mui/material';
 
 interface IProps {
-    test: string;
+    theme: any;
   }
 
 interface IState {
@@ -12,6 +13,12 @@ interface IState {
   }
 
 class CityView extends React.Component<IProps, IState> {
+
+
+    stars = [
+        <div id='stars' key='stars'></div>,
+        <div id='stars2' key='stars2'></div>,
+        <div id='stars3' key='stars3'></div>];
     
     constructor ( props: any ) {
         super( props );
@@ -48,14 +55,21 @@ class CityView extends React.Component<IProps, IState> {
     }
 
     render () {
+        const { theme } = this.props;
         return (
             <div className='city-view'>
+                {theme.palette.mode === 'dark' && this.stars}
                 <WorldTile></WorldTile>
                 {this.state.cloudArray}
             </div>
+           
         );
     }
 
 }
 
-export default CityView;
+export default function ( props: any ) {
+    const theme = useTheme();
+
+    return <CityView {...props} theme={theme}></CityView>;
+}
