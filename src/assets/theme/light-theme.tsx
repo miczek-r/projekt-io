@@ -26,6 +26,30 @@ const lightTheme = createTheme( {
                     color: green
                 }
             }
+        },
+        MuiTextField: {
+            styleOverrides: {
+                root: {
+                    '&.login-textfield': {
+                        '& fieldset': {
+                            'border': 'none'
+                        },
+                        'background': '#FFFFFFAA',
+                        'border-radius': '16px',
+                        'box-shadow': '0px 0px 0 1px black'
+                    }
+                }
+
+            }
+        },
+        MuiButton: {
+            styleOverrides: {
+                root: {
+                    '&.login-button': {
+                        'width': '100%'
+                    }
+                }
+            }
         }
     }
 } );
