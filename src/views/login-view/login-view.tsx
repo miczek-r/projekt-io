@@ -1,10 +1,11 @@
 import './styles.scss';
 import React from 'react';
-import { Button, TextField, useTheme } from '@mui/material';
+import { Button, Divider, Grid, TextField, Typography, useTheme } from '@mui/material';
 import Cloud from '../../components/cloud/cloud';
+import { Link, useNavigate } from 'react-router-dom';
 
 interface IProps{
-    theme: any;
+    navigator: any;
 }
 
 
@@ -36,7 +37,7 @@ class LoginView extends React.Component<IProps, IState> {
                 }></Cloud>]
             } ) );
             this.loop();
-        }, 10000 );
+        }, 5000 );
     }
     
     previousCloudPosition = 0;
@@ -56,23 +57,37 @@ class LoginView extends React.Component<IProps, IState> {
     
 
     render () {
-        const { theme } = this.props;
+        const { navigator } = this.props;
         return (
             <div className='login-view'>
-                
-                {theme.palette.mode === 'dark' && this.stars}
-                <div className='login-window'>
+                <Grid className='login-window' container direction='column'>
                     <div className='login-title'>
-                        LOGIN
+                        LOGOWANIE
                     </div>
-                    <div className='login-form'>
-                        <TextField className='login-textfield'></TextField>    
-                        <TextField className='login-textfield'></TextField>    
-                        <Button className='login-button'>ZALOGUJ</Button>   
-                    </div>
-                </div>    
+                    <Grid className='login-form' container direction='column'
+                        justifyContent='space-around' alignItems='stretch'>
+                        <TextField className='login-textfield' label='Login'></TextField>    
+                        <TextField className='login-textfield'
+                            label='Hasło' type='password'></TextField>    
+                        <Grid gap='16px' container direction='column'>
+                            <Button className='login-button' onClick={()=> navigator( '/' )}>
+                                ZALOGUJ
+                            </Button> 
+                            <Divider/>
+                            <Typography textAlign='center' variant="caption">
+                                Jeśli nie posiadasz jeszcze konta, 
+                                <br/> 
+                                <Link to='login'>załóż je</Link>
+                            </Typography>
+                        </Grid>
+                    </Grid>
+                </Grid>    
+                <div id='login-background'>
+                    <div id='login-night'>{this.stars}</div>    
+                    <div id='login-day'>{this.state.cloudArray}</div>
+                </div>
                 
-                {this.state.cloudArray}
+                
             </div>
         );
     }
@@ -81,7 +96,7 @@ class LoginView extends React.Component<IProps, IState> {
 
 
 export default function ( props: any ) {
-    const theme = useTheme();
+    const navigator = useNavigate();
 
-    return <LoginView {...props} theme={theme}></LoginView>;
+    return <LoginView {...props} navigator={navigator}></LoginView>;
 }

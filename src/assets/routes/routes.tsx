@@ -1,6 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
 
-import Home from '../../views/home/home-component';
 import MainScreen from '../../views/main-screen/main-screen-component';
 import NavBar from '../../views/nav-bar/nav-bar-component';
 import NotFound from '../../views/404/404';
@@ -17,7 +16,6 @@ const CustomRoutes = () =>
         <Route path='/' element={<NavBar />} key='create'>
             <Route path='/' element={<CityView test={''} />}/>  
             <Route path='main' element={<MainScreen />}/>  
-            <Route path='/home' element={<Home />}/>  
             <Route path='tile' element={<TileView />}/> 
             <Route path='game' element={<GameView />}/> 
         </Route>

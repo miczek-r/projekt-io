@@ -1,29 +1,17 @@
 import { createTheme } from '@mui/material';
 import { deepPurple, green } from '@mui/material/colors';
+import baseTheme from './base-theme';
+import { darkBlue } from './colors';
 
-const darkTheme = createTheme( {
+const darkTheme = createTheme( baseTheme, {
     palette: {
-        mode: 'dark'
-    },
-    typography: {
-        fontFamily: 'iA Quattro,montserat',
-        fontSize: 15
+        mode: 'dark',
+        background: {
+            default: darkBlue
+        }
     },
     components: {
-        MuiCssBaseline: {
-            styleOverrides: {
-                body: {
-                    transition: 'all 0.2s'
-                }
-            }
-        },
-        MuiAppBar: {
-            styleOverrides: {
-                root: {
-                    zIndex: 99
-                }
-            }
-        }
+       
     }
 } );
 

@@ -1,72 +1,66 @@
+@import "../../colors.scss";
+
 .login-view {
     height: 100vh;
     width: 100vw;
     display: flex;
+    color: black;
+
+    #login-background {
+        #login-day {
+            position: absolute;
+            background-color: $lightBlue;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+            opacity: 0;
+            animation: login-background 60s ease-in-out infinite;
+        }
+        #login-night {
+            position: absolute;
+            flex-grow: 1;
+            background-color: $darkBlue;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+            opacity: 1;
+        }
+    }
 
     .login-window {
-        display: flex;
-        flex-direction: column;
-        box-shadow: 0.25rem 0.25rem 0rem rgba(98, 98, 157, 0.65);
+        position: absolute;
+        left: 0;
+        right: 0;
+        padding: 10px;
+        padding-top: 0;
         z-index: 2;
         margin: 0 auto;
         align-self: center;
-        height: 500px;
-        width: 300px;
-        background: linear-gradient(45deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.8));
+        height: 550px;
+        width: 325px;
+        background-color: #74747433;
         border-radius: 3rem;
+        -webkit-backdrop-filter: blur(5px);
         backdrop-filter: blur(5px);
-
-        // .login-title {
-        //     position: relative;
-        //     width: 100%;
-        //     height: 75px;
-        //     background-color: #ffeccc;
-        //     border-radius: 3rem 3rem 0 0;
-
-        //     &::before {
-        //         content: "";
-        //         position: absolute;
-
-        //         background-color: transparent;
-        //         bottom: -6rem;
-        //         height: 6rem;
-        //         width: 3rem;
-        //         border-top-left-radius: 3rem;
-        //         box-shadow: 0 -3rem 0 0 #ffeccc; /* This is where the magic happens! */
-        //     }
-        //     &::after {
-        //         content: "";
-        //         position: absolute;
-
-        //         background-color: transparent;
-        //         bottom: -6rem;
-        //         right: 0;
-        //         height: 6rem;
-        //         width: 3rem;
-        //         border-top-right-radius: 3rem;
-        //         box-shadow: 0 -3rem 0 0 #ffeccc; /* This is where the magic happens! */
-        //     }
-        // }
 
         .login-title {
             display: flex;
             align-items: center;
             text-align: center;
             justify-content: center;
-            height: 100px;
+            padding: 1.5rem 0;
             border-radius: 3rem 3rem 0 0;
+            text-shadow: 1px 1px 0 black;
+            color: white;
+            font-size: 2rem;
         }
 
         .login-form {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            align-items: center;
             flex-grow: 1;
             padding: 1rem;
-            margin: 0.5rem;
             border-radius: 3rem;
-            background: linear-gradient(225deg, #55ffd555, #e4bbd0aa);
+            background-color: #ffffff;
+            box-shadow: 0px 0px 15px -5px black;
         }
 
         // .login-form {
@@ -76,5 +70,23 @@
         //     width: 100%;
         //     border-radius: 3rem;
         // }
+    }
+}
+
+@keyframes login-background {
+    0% {
+        opacity: 0;
+    }
+    45% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    95% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
     }
 }

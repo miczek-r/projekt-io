@@ -1,7 +1,7 @@
 import { CssBaseline, Theme, ThemeProvider } from '@mui/material';
 import React, { useState } from 'react';
 
-import getTheme from '../../assets/theme/base-theme';
+import getTheme from '../../assets/theme/theme-getter';
 
 interface IContextProps {
     currentTheme: string;
