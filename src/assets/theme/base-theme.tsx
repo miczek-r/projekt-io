@@ -32,12 +32,14 @@ const baseTheme = createTheme( {
                 root: {
                     '&.login-textfield': {
                         '& fieldset': {
-                            'border-radius': '16px',
                             'border-color': 'transparent',
                             'transition': 'border .25s',
-                            'background': '#dadada'
-                        }
+                            'border-radius': '16px'
+                        },
                         
+                        'background': '#dadada',
+                        'border-radius': '16px',
+                        'color': 'black'
                     }
                 }
 
