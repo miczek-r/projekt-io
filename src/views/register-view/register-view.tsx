@@ -14,7 +14,7 @@ interface IState {
   }
 
 
-class LoginView extends React.Component<IProps, IState> {
+class RegisterView extends React.Component<IProps, IState> {
 
     stars = [
         <div id='stars' key='stars'></div>,
@@ -59,32 +59,34 @@ class LoginView extends React.Component<IProps, IState> {
     render () {
         const { navigator } = this.props;
         return (
-            <div className='login-view'>
-                <Grid className='login-window' container direction='column'>
-                    <div className='login-title'>
-                        LOGOWANIE
+            <div className='register-view'>
+                <Grid className='register-window' container direction='column'>
+                    <div className='register-title'>
+                        REJESTRACJA
                     </div>
-                    <Grid className='login-form' container direction='column'
+                    <Grid className='register-form' container direction='column'
                         justifyContent='space-around' alignItems='stretch'>
                         <TextField className='login-textfield' label='Login'></TextField>    
+                        <TextField className='login-textfield' label='E-mail' type='email'>
+                        </TextField>   
                         <TextField className='login-textfield'
                             label='Hasło' type='password'></TextField>    
                         <Grid gap='16px' container direction='column'>
                             <Button className='login-button' onClick={()=> navigator( '/' )}>
-                                ZALOGUJ
+                                 ZAREJESTRUJ
                             </Button> 
                             <Divider/>
                             <Typography textAlign='center' variant="caption">
-                                Jeśli nie posiadasz jeszcze konta, 
+                                Jeśli masz już konto, 
                                 <br/> 
-                                <Link to='/register'>załóż je</Link>
+                                <Link to='/login'>zaloguj się</Link>
                             </Typography>
                         </Grid>
                     </Grid>
                 </Grid>    
-                <div id='login-background'>
-                    <div id='login-night'>{this.stars}</div>    
-                    <div id='login-day'>{this.state.cloudArray}</div>
+                <div id='register-background'>
+                    <div id='register-night'>{this.stars}</div>    
+                    <div id='register-day'>{this.state.cloudArray}</div>
                 </div>
                 
                 
@@ -98,5 +100,5 @@ class LoginView extends React.Component<IProps, IState> {
 export default function ( props: any ) {
     const navigator = useNavigate();
 
-    return <LoginView {...props} navigator={navigator}></LoginView>;
+    return <RegisterView {...props} navigator={navigator}></RegisterView>;
 }

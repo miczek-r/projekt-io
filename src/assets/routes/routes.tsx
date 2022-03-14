@@ -9,6 +9,7 @@ import TileView from '../../views/tile-view/tile-view-component';
 import Cloud from '../../components/cloud/cloud';
 import GameView from '../../views/game-view/game-view-component';
 import LoginView from '../../views/login-view/login-view';
+import RegisterView from '../../views/register-view/register-view';
 
 
 const CustomRoutes = () => 
@@ -19,7 +20,8 @@ const CustomRoutes = () =>
             <Route path='tile' element={<TileView />}/> 
             <Route path='game' element={<GameView />}/> 
         </Route>
-        <Route path='login' element={<LoginView />}/>  
+        <Route path='login' element={<LoginView />}/> 
+        <Route path='register' element={<RegisterView />}/>   
         <Route path='loading' element={<LoadingScreen />}/>  
         <Route path='cloud' element={<Cloud startingPosition={50} />}/>  
         <Route path='*' element = {<NotFound/>}/>
