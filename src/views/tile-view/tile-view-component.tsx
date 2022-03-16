@@ -20,7 +20,7 @@ const TileView: React.FunctionComponent = () =>{
                         <Box className='card'>
                             <div className='card-inside-property'>
                                 BUDYNEK1
-                                <img src={require( './home-left.png' )} />
+                                <img src={require( '../../assets/images/home-left.png' )} />
                                 <List>
                                     <ListItem>
                                         <Grid container justifyContent='space-between'>
@@ -39,7 +39,7 @@ const TileView: React.FunctionComponent = () =>{
                         <Box className='card'>
                             <div className='card-inside-property'>
                                 BUDYNEK2
-                                <img src={require( './home-left.png' )} />
+                                <img src={require( '../../assets/images/home-left.png' )} />
                                 <List>
                                     <ListItem>
                                         <Grid container justifyContent='space-between'>
@@ -58,7 +58,7 @@ const TileView: React.FunctionComponent = () =>{
                         <Box className='card'>
                             <div className='card-inside-property'>
                                 BUDYNEK3
-                                <img src={require( './home-left.png' )} />
+                                <img src={require( '../../assets/images/home-left.png' )} />
                                 <List>
                                     <ListItem>
                                         <Grid container justifyContent='space-between'>
@@ -77,7 +77,7 @@ const TileView: React.FunctionComponent = () =>{
                         <Box className='card'>
                             <div className='card-inside-property'>
                                 BUDYNEK4
-                                <img src={require( './home-left.png' )} />
+                                <img src={require( '../../assets/images/home-left.png' )} />
                                 <List>
                                     <ListItem>
                                         <Grid container justifyContent='space-between'>
@@ -96,7 +96,7 @@ const TileView: React.FunctionComponent = () =>{
                         <Box className='card'>
                             <div className='card-inside-property'>
                                 BUDYNEK5
-                                <img src={require( './home-left.png' )} />
+                                <img src={require( '../../assets/images/home-left.png' )} />
                                 <List>
                                     <ListItem>
                                         <Grid container justifyContent='space-between'>
@@ -115,7 +115,7 @@ const TileView: React.FunctionComponent = () =>{
                         <Box className='card'>
                             <div className='card-inside-property'>
                                 BUDYNEK6
-                                <img src={require( './home-left.png' )} />
+                                <img src={require( '../../assets/images/home-left.png' )} />
                                 <List>
                                     <ListItem>
                                         <Grid container justifyContent='space-between'>
@@ -134,7 +134,7 @@ const TileView: React.FunctionComponent = () =>{
                         <Box className='card'>
                             <div className='card-inside-property'>
                                 BUDYNEK7
-                                <img src={require( './home-left.png' )} />
+                                <img src={require( '../../assets/images/home-left.png' )} />
                                 <List>
                                     <ListItem>
                                         <Grid container justifyContent='space-between'>
@@ -153,7 +153,7 @@ const TileView: React.FunctionComponent = () =>{
                         <Box className='card'>
                             <div className='card-inside-property'>
                                 BUDYNEK8
-                                <img src={require( './home-left.png' )} />
+                                <img src={require( '../../assets/images/home-left.png' )} />
                                 <List>
                                     <ListItem>
                                         <Grid container justifyContent='space-between'>
@@ -172,7 +172,7 @@ const TileView: React.FunctionComponent = () =>{
                         <Box className='card'>
                             <div className='card-inside-property'>
                                 BUDYNEK9
-                                <img src={require( './home-left.png' )} />
+                                <img src={require( '../../assets/images/home-left.png' )} />
                                 <List>
                                     <ListItem>
                                         <Grid container justifyContent='space-between'>
@@ -191,7 +191,7 @@ const TileView: React.FunctionComponent = () =>{
                         <Box className='card'>
                             <div className='card-inside-property'>
                                 BUDYNEK10
-                                <img src={require( './home-left.png' )} />
+                                <img src={require( '../../assets/images/home-left.png' )} />
                                 <List>
                                     <ListItem>
                                         <Grid container justifyContent='space-between'>

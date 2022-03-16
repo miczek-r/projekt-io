@@ -23,7 +23,11 @@ const baseTheme = createTheme( {
         MuiAppBar: {
             styleOverrides: {
                 root: {
-                    zIndex: 99
+                    zIndex: 99,
+                    backgroundColor: '#74747433',
+                    margin: '10px',
+                    width: 'auto',
+                    borderRadius: '16px'
                 }
             }
         },
