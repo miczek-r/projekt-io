@@ -9,12 +9,14 @@ import { AppBar, Dialog, DialogContent, DialogContentText, DialogTitle, Grid, Ic
     IconButton, Switch, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { CustomThemeContext } from '../../utils/providers/custom-theme-provider';
-import { useContext } from 'react';
-import handleThemeChange from './nav-bar-hoods';
+import { useContext, useEffect } from 'react';
+import { handleThemeChange, useAudio } from './nav-bar-hoods';
 import React from 'react';
 import CustomDrawer from '../../components/custom-drawer/custom-drawer-component';
 import { Transition } from 'react-transition-group';
 import { Translate } from '@mui/icons-material';
+import useSound from 'use-sound';
+import { backgroundMusic } from '../../assets/sounds/background-music';
 
 const NavBar = () => {
     const [open, setOpen] = React.useState( false );
@@ -42,7 +44,15 @@ const NavBar = () => {
         }
     };
     
+
+    useEffect( ()=>{
+        toggle();
+        console.log( 'test' );
+    }, [] );
+
     const [transitionState, setTransitionState] = React.useState( false );
+    const [playing, toggle] = useAudio( backgroundMusic[0] );
+    
 
     return (
         <div>
@@ -103,6 +113,10 @@ const NavBar = () => {
                     <DialogContentText>
                         Zmineń motyw: 
                         <Switch onChange={( event )=>handleThemeChange( event, setTheme )}></Switch>
+                        <button 
+                            onClick= {( event )=>toggle( )}>{playing ? 'Pause' : 'Play'}
+                        </button>
+
                     </DialogContentText>
                 </DialogContent>
             </Dialog>
