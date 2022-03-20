@@ -1,212 +1,68 @@
 import './styles.scss';
-import { Card, Checkbox, Divider, Grid,
-    List, ListItem, ListItemButton, ListItemIcon, ListItemText, Stack } from '@mui/material';
+import { Button, Card, Checkbox, Divider, Grid,
+    Icon, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Stack } from '@mui/material';
 import Tile from '../../components/tile/tile-component';
 import { Box } from '@mui/system';
 import CustomScroll from 'react-custom-scroll';
 import { Scrollbar } from 'react-scrollbars-custom';
 import React from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import GroupsIcon from '@mui/icons-material/Groups';
+
 
 const TileView: React.FunctionComponent = () =>{
+    const tiles = 10;
+    const tilesArray = [];
     const navigator = useNavigate();
-    return (
+
+
+    for ( let i = 0;i < tiles;i++ ) {
+        tilesArray.push( <Box className='card'>
+            <div className='card-inside-property'>
+            BUDYNEK1
+                <img src={require( '../../assets/images/home-left.png' )} />
+                <Grid container gap='10px' direction='column'>
+                    <Grid className='icons' 
+                        container direction='row' 
+                        justifyContent='space-between'
+                        alignItems='center' gap='1rem' width='100%'>
+                        <Icon><GroupsIcon/></Icon>
+                        <span>10</span>
+                    </Grid>
+                    <Divider/>
+                    <Grid className='icons' 
+                        container direction='row' 
+                        justifyContent='space-between'
+                        alignItems='center' gap='1rem' width='100%'>
+                        <Icon><AttachMoneyIcon/></Icon>
+                        <div>10</div>
+                    </Grid>
+                    <Divider/>
+                    <Grid className='icons' 
+                        container direction='row' 
+                        justifyContent='space-between'
+                        alignItems='center' gap='1rem' width='100%'
+                        style={{ padding: '0', marginTop: '1.25rem' }}>
+                        <Button className='login-button' onClick={()=> 
+                            navigator( '/' )}
+                        style={{ fontSize: '1.8rem', width: '100%' }}>
+                     WYBUDUJ
+                        </Button> 
+                    </Grid>
+                </Grid>
+            </div>
+        </Box> );
+    }
+
+    return (        
         <Grid container direction='column' className='tile-view'
-            justifyContent='center' alignItems='center'>
+            justifyContent='center' alignItems='center'> 
             <Tile></Tile>
             <Card className='menu'>
                 <Scrollbar>
                     <Stack alignItems='center' direction="row" spacing={2}>
-                        <Box className='card'>
-                            <div className='card-inside-property'>
-                                BUDYNEK1
-                                <img src={require( '../../assets/images/home-left.png' )} />
-                                <List>
-                                    <ListItem>
-                                        <Grid container justifyContent='space-between'>
-                                            <ListItemText primary="Bank" secondary='300 dolanów'/>
-                                            <ListItemText style={{ textAlign: 'right' }}
-                                                primary="2 dolany/s" secondary='na piętro'/>
-                                            <ListItemButton style={{ textAlign: 'center' }}>
-                                                Wybuduj
-                                            </ListItemButton>
-                                        </Grid>
-                                        
-                                    </ListItem>
-                                </List>
-                            </div>
-                        </Box>
-                        <Box className='card'>
-                            <div className='card-inside-property'>
-                                BUDYNEK2
-                                <img src={require( '../../assets/images/home-left.png' )} />
-                                <List>
-                                    <ListItem>
-                                        <Grid container justifyContent='space-between'>
-                                            <ListItemText primary="Bank" secondary='300 dolanów'/>
-                                            <ListItemText style={{ textAlign: 'right' }}
-                                                primary="2 dolany/s" secondary='na piętro'/>
-                                            <ListItemButton style={{ textAlign: 'center' }}>
-                                                Wybuduj
-                                            </ListItemButton>
-                                        </Grid>
-                                        
-                                    </ListItem>
-                                </List>
-                            </div>
-                        </Box>
-                        <Box className='card'>
-                            <div className='card-inside-property'>
-                                BUDYNEK3
-                                <img src={require( '../../assets/images/home-left.png' )} />
-                                <List>
-                                    <ListItem>
-                                        <Grid container justifyContent='space-between'>
-                                            <ListItemText primary="Bank" secondary='300 dolanów'/>
-                                            <ListItemText style={{ textAlign: 'right' }}
-                                                primary="2 dolany/s" secondary='na piętro'/>
-                                            <ListItemButton style={{ textAlign: 'center' }}>
-                                                Wybuduj
-                                            </ListItemButton>
-                                        </Grid>
-                                        
-                                    </ListItem>
-                                </List>
-                            </div>
-                        </Box>
-                        <Box className='card'>
-                            <div className='card-inside-property'>
-                                BUDYNEK4
-                                <img src={require( '../../assets/images/home-left.png' )} />
-                                <List>
-                                    <ListItem>
-                                        <Grid container justifyContent='space-between'>
-                                            <ListItemText primary="Bank" secondary='300 dolanów'/>
-                                            <ListItemText style={{ textAlign: 'right' }}
-                                                primary="2 dolany/s" secondary='na piętro'/>
-                                            <ListItemButton style={{ textAlign: 'center' }}>
-                                                Wybuduj
-                                            </ListItemButton>
-                                        </Grid>
-                                        
-                                    </ListItem>
-                                </List>
-                            </div>
-                        </Box>
-                        <Box className='card'>
-                            <div className='card-inside-property'>
-                                BUDYNEK5
-                                <img src={require( '../../assets/images/home-left.png' )} />
-                                <List>
-                                    <ListItem>
-                                        <Grid container justifyContent='space-between'>
-                                            <ListItemText primary="Bank" secondary='300 dolanów'/>
-                                            <ListItemText style={{ textAlign: 'right' }}
-                                                primary="2 dolany/s" secondary='na piętro'/>
-                                            <ListItemButton style={{ textAlign: 'center' }}>
-                                                Wybuduj
-                                            </ListItemButton>
-                                        </Grid>
-                                        
-                                    </ListItem>
-                                </List>
-                            </div>
-                        </Box>
-                        <Box className='card'>
-                            <div className='card-inside-property'>
-                                BUDYNEK6
-                                <img src={require( '../../assets/images/home-left.png' )} />
-                                <List>
-                                    <ListItem>
-                                        <Grid container justifyContent='space-between'>
-                                            <ListItemText primary="Bank" secondary='300 dolanów'/>
-                                            <ListItemText style={{ textAlign: 'right' }}
-                                                primary="2 dolany/s" secondary='na piętro'/>
-                                            <ListItemButton style={{ textAlign: 'center' }}>
-                                                Wybuduj
-                                            </ListItemButton>
-                                        </Grid>
-                                        
-                                    </ListItem>
-                                </List>
-                            </div>
-                        </Box>
-                        <Box className='card'>
-                            <div className='card-inside-property'>
-                                BUDYNEK7
-                                <img src={require( '../../assets/images/home-left.png' )} />
-                                <List>
-                                    <ListItem>
-                                        <Grid container justifyContent='space-between'>
-                                            <ListItemText primary="Bank" secondary='300 dolanów'/>
-                                            <ListItemText style={{ textAlign: 'right' }}
-                                                primary="2 dolany/s" secondary='na piętro'/>
-                                            <ListItemButton style={{ textAlign: 'center' }}>
-                                                Wybuduj
-                                            </ListItemButton>
-                                        </Grid>
-                                        
-                                    </ListItem>
-                                </List>
-                            </div>
-                        </Box>
-                        <Box className='card'>
-                            <div className='card-inside-property'>
-                                BUDYNEK8
-                                <img src={require( '../../assets/images/home-left.png' )} />
-                                <List>
-                                    <ListItem>
-                                        <Grid container justifyContent='space-between'>
-                                            <ListItemText primary="Bank" secondary='300 dolanów'/>
-                                            <ListItemText style={{ textAlign: 'right' }}
-                                                primary="2 dolany/s" secondary='na piętro'/>
-                                            <ListItemButton style={{ textAlign: 'center' }}>
-                                                Wybuduj
-                                            </ListItemButton>
-                                        </Grid>
-                                        
-                                    </ListItem>
-                                </List>
-                            </div>
-                        </Box>
-                        <Box className='card'>
-                            <div className='card-inside-property'>
-                                BUDYNEK9
-                                <img src={require( '../../assets/images/home-left.png' )} />
-                                <List>
-                                    <ListItem>
-                                        <Grid container justifyContent='space-between'>
-                                            <ListItemText primary="Bank" secondary='300 dolanów'/>
-                                            <ListItemText style={{ textAlign: 'right' }}
-                                                primary="2 dolany/s" secondary='na piętro'/>
-                                            <ListItemButton style={{ textAlign: 'center' }}>
-                                                Wybuduj
-                                            </ListItemButton>
-                                        </Grid>
-                                        
-                                    </ListItem>
-                                </List>
-                            </div>
-                        </Box>
-                        <Box className='card'>
-                            <div className='card-inside-property'>
-                                BUDYNEK10
-                                <img src={require( '../../assets/images/home-left.png' )} />
-                                <List>
-                                    <ListItem>
-                                        <Grid container justifyContent='space-between'>
-                                            <ListItemText primary="Bank" secondary='300 dolanów'/>
-                                            <ListItemText style={{ textAlign: 'right' }}
-                                                primary="2 dolany/s" secondary='na piętro'/>
-                                            <ListItemButton style={{ textAlign: 'center' }}>
-                                                Wybuduj
-                                            </ListItemButton>
-                                        </Grid>
-                                        
-                                    </ListItem>
-                                </List>
-                            </div>
-                        </Box>
+                        {tilesArray}
                     </Stack>
                 </Scrollbar>
             </Card>
