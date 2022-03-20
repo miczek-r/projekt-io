@@ -18,27 +18,45 @@ const useAudio = ( url: string ) => {
     const [currentSong, setCurrentSong] = useState( 1 );
     const [playing, setPlaying] = useState( false );
   
-    const changeSong = () => audio.src 
-    = backgroundMusic[Math.floor( Math.random() * backgroundMusic.length )];
+    const changeSong = () =>{
+        setCurrentSong( Math.floor( Math.random() * backgroundMusic.length ) );
+        audio.src = backgroundMusic[currentSong];
+    }; 
 
-    const toggle = () => {
+    const toggle = ( play: boolean ) => {
+        console.log( 'togglowanie' );
         audio.volume = 0.01;
-        setCurrentSong( currentSong + 1 );
         changeSong();
-        setPlaying( !playing );
+        setPlaying( play );
+    };
+
+    const startNextSong = () => {
+        console.log( 'funkcja' );
+        changeSong();
+        console.log( 'zmiana' );
+        setPlaying( true );
+        console.log( 'gra' );
     };
   
     useEffect( () => {
         console.log( url );
-        playing ? audio.play() : audio.pause();
+        playing ? audio.play() 
+            : audio.pause();
     },
     [playing]
     );
   
     useEffect( () => {
-        audio.addEventListener( 'ended', () => toggle() );
+        audio.addEventListener( 'ended', () => {
+            console.log( 'asd' );
+            setPlaying( false );
+            startNextSong();
+        } );
         return () => {
-            audio.removeEventListener( 'ended', () => setPlaying( false ) );
+            audio.removeEventListener( 'ended', () => {
+                console.log( 'koniec' );
+                setPlaying( false );
+            } );
         };
     }, [] );
   

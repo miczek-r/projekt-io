@@ -17,6 +17,7 @@ import { Transition } from 'react-transition-group';
 import { Translate } from '@mui/icons-material';
 import useSound from 'use-sound';
 import { backgroundMusic } from '../../assets/sounds/background-music';
+import { WelcomeBackDialog } from '../../components/welcome-back-dialog/welcome-back-dialog';
 
 const NavBar = () => {
     const [open, setOpen] = React.useState( false );
@@ -43,12 +44,6 @@ const NavBar = () => {
             transform: 'translateX(320px)'
         }
     };
-    
-
-    useEffect( ()=>{
-        toggle();
-        console.log( 'test' );
-    }, [] );
 
     const [transitionState, setTransitionState] = React.useState( false );
     const [playing, toggle] = useAudio( backgroundMusic[0] );
@@ -114,7 +109,7 @@ const NavBar = () => {
                         Zmineń motyw: 
                         <Switch onChange={( event )=>handleThemeChange( event, setTheme )}></Switch>
                         <button 
-                            onClick= {( event )=>toggle( )}>{playing ? 'Pause' : 'Play'}
+                            onClick= {( event )=>toggle( !playing )}>{playing ? 'Pause' : 'Play'}
                         </button>
 
                     </DialogContentText>
@@ -130,6 +125,7 @@ const NavBar = () => {
                 }
                 
             </Transition>
+            <WelcomeBackDialog onClose={ () => toggle( true ) }/>
         </div>
     );
 };

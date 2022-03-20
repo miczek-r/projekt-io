@@ -3,6 +3,7 @@ import { useTheme } from '@mui/system';
 import { Dir } from 'fs';
 import { useNavigate } from 'react-router-dom';
 import './styles.scss';
+import home from '../../assets/images/home-left.png';
 
 const WorldTile = () => {
     const tiles = 9;
@@ -14,9 +15,12 @@ const WorldTile = () => {
     for ( let i = 0;i < tiles;i++ ) {
         tilesArray.push( <div className='sub-tile'
             style={{
-                backgroundColor: theme.palette.mode === 'light' ? '#90be6d' : '#304620'
+                backgroundColor: theme.palette.mode === 'light' ? '#90be6d' : '#304620',
+                zIndex: 999 - i 
             }}
-            onClick={() => navigator( '/tile' )}></div> );
+            onClick={() => navigator( '/tile' )}>
+            {i % 1 === 0 && <img src={home}></img>}
+        </div> );
     }
 
     return (
