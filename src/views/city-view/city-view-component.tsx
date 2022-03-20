@@ -2,7 +2,9 @@ import './styles.scss';
 import WorldTile from '../../components/world-tile/world-tile-component';
 import Cloud from '../../components/cloud/cloud';
 import React from 'react';
-import { useTheme } from '@mui/material';
+import { Grid, useTheme } from '@mui/material';
+import ScrollContainer from 'react-indiana-drag-scroll';
+import ReactDOM from 'react-dom';
 
 interface IProps {
     theme: any;
@@ -14,7 +16,7 @@ interface IState {
 
 class CityView extends React.Component<IProps, IState> {
 
-
+    worldTiles: any = [];
     stars = [
         <div id='stars' key='stars'></div>,
         <div id='stars2' key='stars2'></div>,
@@ -25,7 +27,22 @@ class CityView extends React.Component<IProps, IState> {
         this.state = {
             cloudArray: []
         };
+        for ( let i = 0;i < 5 * 5;i++ ) {
+            this.worldTiles.push( <WorldTile zIndex={999 - i}></WorldTile> );
+        }
         this.loop();
+    }
+
+    setScrollPositionToCenter (): void {
+        const node = ReactDOM.findDOMNode( this ) as Element;
+        const left = ( node.scrollWidth - node.clientWidth ) / 2 ;
+        const top = ( node.scrollWidth - node.clientHeight ) / 2;
+        console.log( node.scrollWidth, node.clientWidth );
+        node.scrollBy( left, top );
+    }
+
+    componentDidMount () {
+        this.setScrollPositionToCenter();
     }
 
     loop (): void {
@@ -38,6 +55,7 @@ class CityView extends React.Component<IProps, IState> {
             this.loop();
         }, 10000 );
     }
+    
 
     previousCloudPosition = 0;
 
@@ -57,11 +75,17 @@ class CityView extends React.Component<IProps, IState> {
     render () {
         const { theme } = this.props;
         return (
-            <div className='city-view'>
+            <ScrollContainer vertical horizontal className='city-view'>
                 {theme.palette.mode === 'dark' && this.stars}
-                <WorldTile></WorldTile>
+                <div className="wrapper">
+                    <div className='world' style={{
+                        gridTemplateColumns: 'repeat(5,1fr)'
+                    }}>
+                        {this.worldTiles}
+                    </div>
+                </div>
                 {this.state.cloudArray}
-            </div>
+            </ScrollContainer>
            
         );
     }

@@ -1,39 +1,40 @@
 $tile-size: 250px;
 $side-size: 25px;
 
-.world-tile{
+.world-tile {
     width: $tile-size;
     height: $tile-size;
-    transform: rotate(210deg) skew(-30deg) scaleY(0.864);
-    animation: bobbing 2s ease-in-out alternate infinite;
-   
 
-    .tile-top{
+    animation: bobbing 2s ease-in-out alternate infinite;
+
+    .tile-top {
         height: 100%;
         display: grid;
         grid-gap: 0.75rem;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(3, 1fr);
-        
     }
-    .tile-front{
+    .tile-front {
         height: $side-size;
-        transform: rotate(0deg) scaleY(1.0) translate(-$side-size, calc(-#{$tile-size} - #{$side-size})) skew(45deg);
+        transform: rotate(0deg) scaleY(1) translate(-$side-size, calc(-#{$tile-size} - #{$side-size})) skew(45deg);
         transform-origin: 0 0;
     }
 
-    .tile-side{
+    .tile-side {
         height: $side-size;
-        transform: rotate(90deg) scaleY(1.0) translate(calc(-#{$side-size} - #{$tile-size}), ) skew(-45deg);
+        transform: rotate(90deg) scaleY(1) translate(calc(-#{$side-size} - #{$tile-size})) skew(-45deg);
         transform-origin: 0 0;
     }
 
-    
-
-    .sub-tile{
-        box-shadow: -0 -0 0 rgba(0,0,0,0.7);
-        transition: .25s ease-in-out 0s;
-        *{
+    .sub-tile {
+        box-shadow: -0 -0 0 rgba(0, 0, 0, 0.7);
+        transition: 0.25s ease-in-out 0s;
+        * {
+            -moz-user-select: -moz-none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
             pointer-events: none;
             max-width: 100%;
             max-height: 100%;
@@ -41,26 +42,14 @@ $side-size: 25px;
         }
     }
 
-    .sub-tile:hover{
-        
-        filter:brightness(130%);
+    .sub-tile:hover {
+        filter: brightness(130%);
         transform: translate(5px, 5px);
-        transition: .25s linear 0s;
+        transition: 0.25s linear 0s;
 
-        box-shadow: -5px -5px 5px rgba(0,0,0,0.7);
-        *{
+        box-shadow: -5px -5px 5px rgba(0, 0, 0, 0.7);
+        * {
             opacity: 1;
         }
     }
-
-    @keyframes bobbing {
-        from{
-            transform: rotate(210deg) skew(-30deg) scaleY(0.864) translate(0px, 0px);
-        }
-        
-        to{
-            transform: rotate(210deg) skew(-30deg) scaleY(0.864) translate(5px, 5px);
-        }
-    }
-
 }

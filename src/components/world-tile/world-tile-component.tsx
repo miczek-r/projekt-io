@@ -4,8 +4,13 @@ import { Dir } from 'fs';
 import { useNavigate } from 'react-router-dom';
 import './styles.scss';
 import home from '../../assets/images/home-left.png';
+import zIndex from '@mui/material/styles/zIndex';
 
-const WorldTile = () => {
+interface IProps{
+    zIndex: number;
+}
+
+const WorldTile = ( props: IProps ) => {
     const tiles = 9;
     const tilesArray = [];
 
@@ -25,7 +30,8 @@ const WorldTile = () => {
 
     return (
         <div className='world-tile' style={{
-            backgroundColor: theme.palette.mode === 'light' ? '#4d4d4d' : '#1a1a1a'
+            backgroundColor: theme.palette.mode === 'light' ? '#4d4d4d' : '#1a1a1a',
+            zIndex: props.zIndex
         }}>
             <div className='tile-top'>
                 {tilesArray}    
