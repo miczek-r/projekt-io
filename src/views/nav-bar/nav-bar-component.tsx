@@ -15,7 +15,6 @@ import React from 'react';
 import CustomDrawer from '../../components/custom-drawer/custom-drawer-component';
 import { Transition } from 'react-transition-group';
 import { Translate } from '@mui/icons-material';
-import useSound from 'use-sound';
 import { backgroundMusic } from '../../assets/sounds/background-music';
 import { WelcomeBackDialog } from '../../components/welcome-back-dialog/welcome-back-dialog';
 

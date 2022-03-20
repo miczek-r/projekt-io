@@ -3,6 +3,7 @@
 .tile-view{
     margin: 0 auto;
     flex-grow: 1;
+   
 
     .menu{
         padding: 2rem;
@@ -15,26 +16,30 @@
         -webkit-backdrop-filter: blur(5px);
         backdrop-filter: blur(5px);
         margin-top: 2rem;
+        max-height: 600px;
     }
         .card{
             padding: 2rem;
             z-index: 2;
             align-self: center;
-            height: 500px;
             background-color: #74747433;
             border-radius: 3rem;
-            -webkit-backdrop-filter: blur(5px);
-            backdrop-filter: blur(5px);
 
             .card-inside-property {
-                min-width: 240px;
                 text-align: center;
                 color: white;
                 font-size: 2rem;
+                width: 15rem;
                 img{
                     margin-top: 1rem;
                     height: 100px;
                     width: 100px;
+                }
+                .icons{
+                    line-height: 1.4;
+                    color: white !important;
+                    padding: 5px 20px ;
+                    border-radius: 16px !important;
                 }
             }
     }
