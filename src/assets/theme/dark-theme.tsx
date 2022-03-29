@@ -11,7 +11,6 @@ const darkTheme = createTheme( baseTheme, {
         }
     },
     components: {
-       
     }
 } );
 

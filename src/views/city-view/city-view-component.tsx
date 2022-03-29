@@ -5,6 +5,16 @@ import React from 'react';
 import { Grid, useTheme } from '@mui/material';
 import ScrollContainer from 'react-indiana-drag-scroll';
 import ReactDOM from 'react-dom';
+import { NoEncryption } from '@mui/icons-material';
+import { BigField, BigFieldsApi } from '../../api/api';
+import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch';
+import { minHeight } from '@mui/system';
+
+interface Position{
+    x: number;
+    y: number;
+    scale: number;
+}
 
 interface IProps {
     theme: any;
@@ -12,33 +22,66 @@ interface IProps {
 
 interface IState {
     cloudArray: any[];
+    worldTiles: any[];
+    pos: Position;
   }
 
 class CityView extends React.Component<IProps, IState> {
 
+    worldTilesLogic: BigField[] = [];
     worldTiles: any = [];
     stars = [
         <div id='stars' key='stars'></div>,
         <div id='stars2' key='stars2'></div>,
         <div id='stars3' key='stars3'></div>];
     
+    scrollContainerRef: React.RefObject<HTMLDivElement>;
+
     constructor ( props: any ) {
         super( props );
         this.state = {
-            cloudArray: []
+            cloudArray: [],
+            worldTiles: [],
+            pos: { x: 0, y: 0, scale: 1 }
         };
-        for ( let i = 0;i < 5 * 5;i++ ) {
-            this.worldTiles.push( <WorldTile zIndex={999 - i}></WorldTile> );
-        }
+        this.scrollContainerRef = React.createRef();
+        this.getCityData();
         this.loop();
     }
 
+    async getCityData () {
+        const cityApi = new BigFieldsApi();
+        const userId = localStorage.getItem( 'userID' );
+        if ( userId !== null ) {
+            cityApi.getBigFieldsListByUserIDIDGet( userId ).then(
+                response => {
+                    this.worldTilesLogic = response.data;
+                    for ( let i = 0; i < this.worldTilesLogic.length; i++ ) {
+                        this.worldTiles.push( <WorldTile key={i} 
+                            data={this.worldTilesLogic.at( i )!.fields!}
+                            style={{ zIndex: 999 - i }}></WorldTile> );
+                        this.setState( {
+                            worldTiles: this.worldTiles
+                        } );
+                    }
+                }
+            );
+        }
+    }
+
     setScrollPositionToCenter (): void {
-        const node = ReactDOM.findDOMNode( this ) as Element;
+        const node = this.scrollContainerRef.current!;
         const left = ( node.scrollWidth - node.clientWidth ) / 2 ;
-        const top = ( node.scrollWidth - node.clientHeight ) / 2;
+        const top = node.scrollHeight / 2;
         console.log( node.scrollWidth, node.clientWidth );
         node.scrollBy( left, top );
+    }
+
+    setScrollPosition ( left: number, top: number ): void {
+        const node = this.scrollContainerRef.current!;
+        console.log( node.scrollLeft * left, node.scrollWidth );
+        console.log( top * node.scrollTop, node.scrollHeight );
+        //node.scrollBy( node.scrollLeft * left, top * node.scrollTop );
     }
 
     componentDidMount () {
@@ -72,21 +115,50 @@ class CityView extends React.Component<IProps, IState> {
         return currentCloudPosition;
     }
 
+    onScroll ( e: React.WheelEvent ) {
+        const delta = e.deltaY * -0.01 * 0.1;
+        let newScale = this.state.pos.scale + delta;
+        if ( newScale < 1 ) {
+            newScale = 1;
+        }
+        if ( newScale > 2 ) {
+            newScale = 2;
+        }
+        const ratio = 1 - newScale / this.state.pos.scale;
+        this.setState( ( previousState, props ) => ( {
+            pos: {
+                scale: newScale,
+                x: newScale / previousState.pos.scale,
+                y: newScale / previousState.pos.scale
+            }
+            
+        } ) );
+        this.setScrollPosition( this.state.pos.x, this.state.pos.y );
+    }
+
     render () {
         const { theme } = this.props;
         return (
-            <ScrollContainer vertical horizontal className='city-view'>
+            <ScrollContainer innerRef={this.scrollContainerRef} 
+                vertical horizontal className='city-view' >
                 {theme.palette.mode === 'dark' && this.stars}
-                <div className="wrapper">
-                    <div className='world' style={{
-                        gridTemplateColumns: 'repeat(5,1fr)'
+                <div className="wrapper" ref={this.scrollContainerRef}  
+                    onWheel={( e )=>this.onScroll( e )} 
+                    style={{
+                        transformOrigin: '0 0',
+                        transform: `
+                            scale(${this.state.pos.scale})`
                     }}>
-                        {this.worldTiles}
+                    <div className='world' style={{
+                        gridTemplateColumns: 'repeat(7,1fr)'
+                            
+                            
+                    }}>
+                        {this.state.worldTiles}
                     </div>
+                    {this.state.cloudArray}
                 </div>
-                {this.state.cloudArray}
             </ScrollContainer>
-           
         );
     }
 
