@@ -12,8 +12,11 @@ export const GuardedRoute = () => {
         const id = localStorage.getItem( 'userID' )!;
         userInfoApi.getUsersProgressInfoByUserIDIdGet( id ).then(
             result => {
+                const oldMoney: number = Number.parseInt( localStorage.getItem( 'money' ) ?? '0' );
                 localStorage.setItem( 'population', result.data?.population?.toString() ?? '0' );
                 localStorage.setItem( 'money', result.data?.coins?.toString() ?? '0' );
+                const newMoney: number = result.data?.coins ?? 0;
+                localStorage.setItem( 'gain', ( newMoney - oldMoney ).toString() );
             }
 
         );

@@ -31,7 +31,7 @@ export const WelcomeBackDialog = ( props: IProps ) => {
                     {t( 'welcome_back.label' )}:
                 </DialogContentText>
                 <DialogContentText>
-                    {t( 'welcome_back.earnings', { earnings: '0' } )}
+                    {t( 'welcome_back.earnings', { earnings: localStorage.getItem( 'gain' ) } )}
                 </DialogContentText>
             </DialogContent>
             <DialogActions>
