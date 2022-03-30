@@ -1,33 +1,40 @@
 $single-tile-size: 100px;
 $single-side-size: 15px;
 
-.single-tile{
+.single-tile {
     width: $single-tile-size;
     height: $single-tile-size;
     transform: rotate(210deg) skew(-30deg) scaleY(0.864);
     animation: bobbing 2s ease-in-out alternate infinite;
-   
 
-    .single-tile-top{
+    .single-tile-top {
         height: 100%;
-        display: grid;
-        grid-gap: 0.5rem;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(3, 1fr);
+        box-shadow: -0 -0 0 rgba(0, 0, 0, 0.7);
+        transition: 0.25s ease-in-out 0s;
+        position: relative;
+        * {
+            position: absolute;
+            -moz-user-select: -moz-none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            pointer-events: none;
+            max-width: 100%;
+            transform-origin: bottom;
+        }
     }
 
-    .single-tile-front{
+    .single-tile-front {
         height: $single-side-size;
-        transform: rotate(0deg) scaleY(1.0) translate(-$single-side-size, calc(-#{$single-tile-size} - #{$single-side-size})) skew(45deg);
+        transform: rotate(0deg) scaleY(1)
+            translate(-$single-side-size, calc(-#{$single-tile-size} - #{$single-side-size})) skew(45deg);
         transform-origin: 0 0;
     }
 
-    .single-tile-side{
+    .single-tile-side {
         height: $single-side-size;
-        transform: rotate(90deg) scaleY(1.0) translate(calc(-#{$single-side-size} - #{$single-tile-size}), ) skew(-45deg);
+        transform: rotate(90deg) scaleY(1) translate(calc(-#{$single-side-size} - #{$single-tile-size})) skew(-45deg);
         transform-origin: 0 0;
     }
-
-    
-
 }

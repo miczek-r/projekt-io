@@ -1,0 +1,37 @@
+{
+    "authorization": {
+        "login": {
+            "title": "logowanie",
+            "description": "Jeśli nie posiadasz jeszcze konta,",
+            "description_link": "załóż je",
+            "button": "zaloguj"
+        },
+        "registration": {
+            "title": "rejestracja",
+            "registration_success": "Pomyślnie zarejestrowano użytkownika.",
+            "description": "Jeśli masz już konto,",
+            "description_link": "zaloguj się",
+            "button": "zarejestruj"
+        },
+        "loginField": "nazwa użytkownika",
+        "passwordField": "hasło",
+        "emailField": "e-mail"
+    },
+    "city" : {
+        "label": "Miasto {{whos}}",
+        "build": "wybuduj"
+    },
+    "welcome_back": {
+        "welcome": "Witaj z powrotem {{who}}",
+        "label": "Pod twoją nieobecność",
+        "earnings": "Zarobiłeś: {{earnings}}"
+    },
+    "settings": {
+        "label": "Ustawienia",
+        "darkTheme": "Ciemny motyw",
+        "lightTheme": "Jasny motyw",
+        "music": "Muzyka",
+        "english": "Angielski",
+        "polish": "Polski"
+    }
+}

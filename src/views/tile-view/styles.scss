@@ -1,11 +1,10 @@
 @import "../../colors.scss";
 
-.tile-view{
+.tile-view {
     margin: 0 auto;
     flex-grow: 1;
-   
 
-    .menu{
+    .menu {
         padding: 2rem;
         z-index: 2;
         align-self: center;
@@ -18,29 +17,30 @@
         margin-top: 2rem;
         max-height: 600px;
     }
-        .card{
-            padding: 2rem;
-            z-index: 2;
-            align-self: center;
-            background-color: #74747433;
-            border-radius: 3rem;
+    .card {
+        padding: 2rem;
+        z-index: 2;
+        align-self: center;
+        background-color: #74747433;
+        border-radius: 3rem;
 
-            .card-inside-property {
-                text-align: center;
-                color: white;
-                font-size: 2rem;
-                width: 15rem;
-                img{
-                    margin-top: 1rem;
-                    height: 100px;
-                    width: 100px;
-                }
-                .icons{
-                    line-height: 1.4;
-                    color: white !important;
-                    padding: 5px 20px ;
-                    border-radius: 16px !important;
-                }
+        .card-inside-property {
+            text-align: center;
+            color: white;
+            font-size: 2rem;
+            width: 15rem;
+            img {
+                margin-top: 1rem;
+                height: 100px;
+                width: 100px;
             }
+            .icons {
+                line-height: 1.4;
+                color: white !important;
+                padding: 5px 20px;
+                border-radius: 16px !important;
+            }
+        }
     }
+
 }

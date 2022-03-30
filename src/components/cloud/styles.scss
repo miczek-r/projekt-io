@@ -1,44 +1,43 @@
-.cloud{
+.cloud {
     position: absolute;
     animation: cloud-flow 60s linear forwards;
     pointer-events: none;
 }
 
-.cloud-child{
+.cloud-child {
     position: absolute;
     display: flex;
-    background-color: rgba(255, 255, 255, 0.65);  
+    background-color: rgba(255, 255, 255, 0.65);
     transform: rotate(210deg) skew(-30deg) scaleY(0.864);
     animation: bobbing 2s ease-in-out alternate infinite;
 }
 
-.cloud-child::before{
-    content: '';
+.cloud-child::before {
+    content: "";
     position: absolute;
     display: block;
     height: 10px;
     width: inherit;
-    background-color: rgba(220, 220, 240, 0.65);  
+    background-color: rgba(220, 220, 240, 0.65);
     transform: skew(45deg) translate(4px, -10px);
 }
 
-.cloud-child::after{
-    content: '';
+.cloud-child::after {
+    content: "";
     position: absolute;
     display: block;
     height: inherit;
     width: 10px;
-    background-color: rgba(98, 98, 157, 0.65);  
+    background-color: rgba(98, 98, 157, 0.65);
     transform-origin: 100% -30%;
     transform: skewY(45deg) translate(-10px, 10px);
 }
 
 @keyframes cloud-flow {
-    from{
-        transform:  translate(0, 0);
+    from {
+        transform: translate(0, 0);
     }
-    to{
-        transform:  translate(calc(-100vh - 100vw), calc(-100vh - 100vw));
+    to {
+        transform: translate(calc(-4000px), calc(-4000px));
     }
 }
-

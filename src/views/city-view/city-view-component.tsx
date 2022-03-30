@@ -96,7 +96,7 @@ class CityView extends React.Component<IProps, IState> {
                 }></Cloud>]
             } ) );
             this.loop();
-        }, 10000 );
+        }, 1000 );
     }
     
 
@@ -105,8 +105,8 @@ class CityView extends React.Component<IProps, IState> {
     private randomizeCloudPosition (): number {
         let currentCloudPosition = Math.floor(
             Math.random()
-            * ( window.innerWidth * 2 - window.innerWidth / 2 + 1 )
-            + window.innerWidth / 2
+            * ( 3000 * 2 - 3000 / 2 + 1 )
+            + 3000 / 2
         );
         if ( Math.abs( currentCloudPosition - this.previousCloudPosition ) < 40 ) {
             currentCloudPosition = this.randomizeCloudPosition();
@@ -124,7 +124,6 @@ class CityView extends React.Component<IProps, IState> {
         if ( newScale > 2 ) {
             newScale = 2;
         }
-        const ratio = 1 - newScale / this.state.pos.scale;
         this.setState( ( previousState, props ) => ( {
             pos: {
                 scale: newScale,

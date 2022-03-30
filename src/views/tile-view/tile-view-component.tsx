@@ -12,20 +12,22 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import { render } from '@testing-library/react';
 import { BuildingsShop, BuildingsShopsApi, Field, FieldsApi } from '../../api';
 import ScrollContainer from 'react-indiana-drag-scroll';
+import { useTranslation } from 'react-i18next';
 
 
 interface IProps{
     navigator: any;
     params: any;
+    translate: any;
 }
 
 interface IState{
     tilesArray: any[];
+    imageName: string | null | undefined;
 }
 
 class TileView extends React.Component<IProps, IState> {
 
-    tiles = 10;
     shopBuildings: BuildingsShop[] = [];
     tilesArray: any = [];
 
@@ -35,6 +37,20 @@ class TileView extends React.Component<IProps, IState> {
             result => {
                 this.shopBuildings = result.data;
                 this.fill();
+            }
+        );
+    }
+
+    async getCurrentTileData () {
+        const { params } = this.props;
+        const id = params['id'];
+        const fieldsApi = new FieldsApi();
+        fieldsApi.apiFieldsIdGet( id ).then(
+            result => {
+                this.setState( {
+                    imageName: result.data.placedBuilding?.imageName
+                } );
+                console.log( this.state.imageName );
             }
         );
     }
@@ -65,6 +81,7 @@ class TileView extends React.Component<IProps, IState> {
     }
 
     fill () {
+        const { translate } = this.props;
         console.log( 'asd' );
         for ( let i = 0;i < this.shopBuildings.length;i++ ) {
             this.tilesArray.push( <Box className='card'>
@@ -100,7 +117,7 @@ class TileView extends React.Component<IProps, IState> {
                             <Button className='login-button' 
                                 onClick={()=>this.build( this.shopBuildings.at( i )!.id! )}
                                 style={{ fontSize: '1.8rem', width: '100%' }}>
-                         WYBUDUJ
+                                {translate( 'city.build' ).toUpperCase()}
                             </Button> 
                         </Grid>
                     </Grid>
@@ -115,16 +132,18 @@ class TileView extends React.Component<IProps, IState> {
     constructor ( props: any ) {
         super( props );
         this.state = {
-            tilesArray: []
+            tilesArray: [],
+            imageName: null
         };
         this.getBuildings();
+        this.getCurrentTileData();
     }
 
     render () {
         return (        
             <Grid container direction='column' className='tile-view'
                 justifyContent='center' alignItems='center'> 
-                <Tile></Tile>
+                <Tile imageName={this.state.imageName}></Tile>
                 <Card className='menu'>
                     <Scrollbar>
                         <ScrollContainer>
@@ -143,7 +162,8 @@ class TileView extends React.Component<IProps, IState> {
 
 export default function ( props: any ) {
     const params = useParams();
+    const { t } = useTranslation( );
     const navigator = useNavigate();
 
-    return <TileView {...props} params={params} navigator={navigator}></TileView>;
+    return <TileView {...props} params={params} navigator={navigator} translate={t}></TileView>;
 }

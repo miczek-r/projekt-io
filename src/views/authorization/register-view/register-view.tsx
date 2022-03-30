@@ -5,9 +5,10 @@ import { Alert, Button, Divider,
 import Cloud from '../../../components/cloud/cloud';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthenticateApi, AuthenticateApiFactory, RegisterModel } from '../../../api/api';
+import { useTranslation } from 'react-i18next';
 
 interface IProps{
-    navigator: any;
+    translate: any;
 }
 
 
@@ -67,13 +68,14 @@ class RegisterView extends React.Component<IProps, IState> {
     }
 
     async register () {
+        const { translate } = this.props;
         const api = new AuthenticateApi();
         console.log( this.state.registerModel );
         api.apiAuthenticateRegisterPost( this.state.registerModel ).then( response => {
             this.setState( {
                 showAlert: {
                     isError: false,
-                    content: 'Pomyślnie zarejestrowano użytkownika.'
+                    content: translate( 'authorization.registration_success' )
                 }
             } );
         }
@@ -129,32 +131,38 @@ class RegisterView extends React.Component<IProps, IState> {
     };
 
     render () {
-        const { navigator } = this.props;
+        const { translate } = this.props;
         return (
             <div className='register-view'>
                 <Grid className='register-window' container direction='column'>
                     <div className='register-title'>
-                        REJESTRACJA
+                        {translate( 'authorization.registration.title' ).toUpperCase()}
                     </div>
                     <Grid className='register-form' container direction='column'
                         justifyContent='space-around' alignItems='stretch'>
-                        <TextField className='login-textfield' label='Login' 
+                        <TextField className='login-textfield' 
+                            label={translate( 'authorization.loginField' )} 
                             onChange={this.handleLoginChange}></TextField>    
-                        <TextField className='login-textfield' label='E-mail' type='email'
+                        <TextField className='login-textfield'
+                            label={translate( 'authorization.emailField' )}
+                            type='email'
                             onChange={this.handleEmailChange}>
                         </TextField>   
                         <TextField className='login-textfield'
                             onChange={this.handlePasswordChange}
-                            label='Hasło' type='password'></TextField>    
+                            label={translate( 'authorization.passwordField' )} 
+                            type='password'></TextField>    
                         <Grid gap='16px' container direction='column'>
                             <Button className='login-button' onClick={()=> this.register()}>
-                                 ZAREJESTRUJ
+                                {translate( 'authorization.registration.button' ).toUpperCase()}
                             </Button> 
                             <Divider/>
                             <Typography textAlign='center' variant="caption">
-                                Jeśli masz już konto, 
+                                {translate( 'authorization.registration.description' )}
                                 <br/> 
-                                <Link to='/login'>zaloguj się</Link>
+                                <Link to='/login'>
+                                    {translate( 'authorization.registration.description_link' )}
+                                </Link>
                             </Typography>
                         </Grid>
                     </Grid>
@@ -179,7 +187,7 @@ class RegisterView extends React.Component<IProps, IState> {
 
 
 export default function ( props: any ) {
-    const navigator = useNavigate();
+    const { t } = useTranslation();
 
-    return <RegisterView {...props} navigator={navigator}></RegisterView>;
+    return <RegisterView {...props} translate={t}></RegisterView>;
 }

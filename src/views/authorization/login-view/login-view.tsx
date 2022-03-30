@@ -5,9 +5,11 @@ import { Alert, Button, Divider,
 import Cloud from '../../../components/cloud/cloud';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthenticateApi, LoginModel } from '../../../api';
+import { useTranslation } from 'react-i18next';
 
 interface IProps{
     navigator: any;
+    translate: any;
 }
 
 interface AuthenticationResponse{
@@ -67,6 +69,7 @@ class LoginView extends React.Component<IProps, IState> {
         api.apiAuthenticateLoginPost( this.state.loginModel ).then( response => {
             const data = response.data as unknown as AuthenticationResponse;
             console.log( data );
+            localStorage.setItem( 'username', this.state.loginModel.userName );
             localStorage.removeItem( 'token' );
             localStorage.removeItem( 'tokenExpiration' );
             localStorage.removeItem( 'userID' );
@@ -131,31 +134,34 @@ class LoginView extends React.Component<IProps, IState> {
     
 
     render () {
-        const { navigator } = this.props;
+        const { translate } = this.props;
         return (
             <div className='login-view'>
                 <Grid className='login-window' container direction='column'>
                     <div className='login-title'>
-                        LOGOWANIE
+                        {translate( 'authorization.login.title' ).toUpperCase()}
                     </div>
                     <Grid className='login-form' container direction='column'
                         justifyContent='space-around' alignItems='stretch'>
-                        <TextField className='login-textfield' label='Login'
+                        <TextField className='login-textfield' 
+                            label={translate( 'authorization.loginField' )}
                             onChange = {this.handleUserNameChange}>
                         </TextField>    
                         <TextField className='login-textfield'
-                            label='Hasło' type='password'
+                            label={translate( 'authorization.passwordField' )} type='password'
                             onChange = {this.handlePasswordChange} >
                         </TextField>    
                         <Grid gap='16px' container direction='column'>
                             <Button className='login-button' onClick={()=> this.login()}>
-                                ZALOGUJ
+                                {translate( 'authorization.login.button' ).toUpperCase()}
                             </Button> 
                             <Divider/>
                             <Typography textAlign='center' variant="caption">
-                                Jeśli nie posiadasz jeszcze konta, 
+                                {translate( 'authorization.login.description' )}
                                 <br/> 
-                                <Link to='/register'>załóż je</Link>
+                                <Link to='/register'>
+                                    {translate( 'authorization.login.description_link' )}
+                                </Link>
                             </Typography>
                         </Grid>
                     </Grid>
@@ -181,6 +187,7 @@ class LoginView extends React.Component<IProps, IState> {
 
 export default function ( props: any ) {
     const navigator = useNavigate();
+    const { t } = useTranslation( );
 
-    return <LoginView {...props} navigator={navigator}></LoginView>;
+    return <LoginView {...props} navigator={navigator} translate={t}></LoginView>;
 }

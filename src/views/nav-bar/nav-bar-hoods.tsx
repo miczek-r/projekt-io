@@ -7,11 +7,21 @@ const handleThemeChange = ( event: { target: { checked: any; };}, setTheme: any 
     const { checked } = event.target;
     if ( checked ) {
         setTheme( 'dark' );
+        localStorage.setItem( 'theme', 'dark' );
     } else {
         setTheme( 'light' );
+        localStorage.setItem( 'theme', 'light' );
     }
 };
 
+const handleLanguageChange = ( event: { target: { checked: any; };} ) => {
+    const { checked } = event.target;
+    if ( checked ) {
+        localStorage.setItem( 'language', 'pl' );
+    } else {
+        localStorage.setItem( 'language', 'en' );
+    }
+};
 
 const useAudio = ( url: string ) => {
     const [audio] = useState( new Audio( backgroundMusic[0] ) );
@@ -64,4 +74,4 @@ const useAudio = ( url: string ) => {
 };
 
 
-export { handleThemeChange, useAudio };
+export { handleThemeChange, handleLanguageChange, useAudio };

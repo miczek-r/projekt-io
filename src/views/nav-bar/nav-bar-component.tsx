@@ -10,7 +10,7 @@ import { AppBar, Button, Dialog, DialogContent, DialogContentText, DialogTitle, 
 import { Outlet, useNavigate } from 'react-router-dom';
 import { CustomThemeContext } from '../../utils/providers/custom-theme-provider';
 import { useContext, useEffect } from 'react';
-import { handleThemeChange, useAudio } from './nav-bar-hoods';
+import { handleLanguageChange, handleThemeChange, useAudio } from './nav-bar-hoods';
 import React from 'react';
 import CustomDrawer from '../../components/custom-drawer/custom-drawer-component';
 import { Transition } from 'react-transition-group';
@@ -18,6 +18,8 @@ import { Translate, VolumeDown, VolumeOff, VolumeUp } from '@mui/icons-material'
 import { backgroundMusic } from '../../assets/sounds/background-music';
 import { WelcomeBackDialog } from '../../components/welcome-back-dialog/welcome-back-dialog';
 import { UsersProgressInfoesApi } from '../../api';
+import { changeLanguage } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 const NavBar = () => {
     const [open, setOpen] = React.useState( false );
@@ -25,6 +27,7 @@ const NavBar = () => {
     const [money, setMoney] = React.useState( 0 );
     const theme = useTheme();
     const navigator = useNavigate();
+    const { t, i18n } = useTranslation();
     const { currentTheme, setTheme } = useContext( CustomThemeContext );
     const fullScreen = useMediaQuery( theme.breakpoints.down( 'md' ) );
 
@@ -43,6 +46,17 @@ const NavBar = () => {
     
     const handleClose = () => {
         setOpen( false );
+    };
+
+    const changeLanguage = ( event: any ) => {
+        const { checked } = event.target;
+        if ( localStorage.getItem( 'language' ) === 'en' ) {
+            i18n.changeLanguage( 'pl' );
+            localStorage.setItem( 'language', 'pl' );
+        } else {
+            i18n.changeLanguage( 'en' );
+            localStorage.setItem( 'language', 'en' );
+        }
     };
 
     const transitions: any = {
@@ -91,7 +105,9 @@ const NavBar = () => {
                         <Grid onClick={() => navigator( '/' )} 
                             className='nav-bar-element-background' item
                             container justifyContent='center' xs={1}>
-                            <Typography>City</Typography>
+                            <Typography>{t( 'city.label', 
+                                { whos: localStorage.getItem( 'username' ) }
+                            )}</Typography>
                         
                         </Grid>
                         <Grid container justifyContent='end' gap='10px' item xs={1}>
@@ -127,17 +143,35 @@ const NavBar = () => {
                     <Grid container flexDirection='column'>
                         <Grid container flexDirection='row' justifyContent='space-between'
                             alignItems='center' >
-                        Zmineń motyw: 
+                            {localStorage.getItem( 'theme' ) === 'dark'
+                                ? t( 'settings.darkTheme' ) 
+                                : t( 'settings.lightTheme' )} 
                             <Switch 
+                                checked={localStorage.getItem( 'theme' ) === 'dark' ? true : false}
                                 onChange={( event )=>handleThemeChange( event, setTheme )}></Switch>
+                                
                         </Grid>
                         <Grid container flexDirection='row' justifyContent='space-between'
                             alignItems='center' >
-                        Muzyka:
+                            {t( 'settings.music' )}:
                             <IconButton className='login-button'
                                 onClick= {( event )=>toggle( !playing )}>
                                 {playing ? <VolumeUp/> : <VolumeOff/>}
                             </IconButton>
+                        </Grid>
+                        <Grid container flexDirection='row' justifyContent='space-between'
+                            alignItems='center' >
+                            {localStorage.getItem( 'language' ) === 'en'
+                                ? t( 'settings.english' ) 
+                                : t( 'settings.polish' )} 
+                            <Switch 
+                                checked={localStorage.getItem( 'language' ) === 'en' 
+                                    ? true : false}
+                                onChange={
+                                    ( event )=> {
+                                        changeLanguage( event );
+                                    }
+                                }></Switch>
                         </Grid>
                     </Grid>
                 </DialogContent>

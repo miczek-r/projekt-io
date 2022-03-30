@@ -1,6 +1,7 @@
 import { Dialog, DialogActions, 
     DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { handleThemeChange } from '../../views/nav-bar/nav-bar-hoods';
 
 interface IProps{
@@ -9,6 +10,7 @@ interface IProps{
 
 export const WelcomeBackDialog = ( props: IProps ) => {
     const [open, setOpen] = React.useState( true );
+    const { t } = useTranslation();
     const handleClose = () => {
         setOpen( false );
         props.onClose();
@@ -22,14 +24,14 @@ export const WelcomeBackDialog = ( props: IProps ) => {
             aria-labelledby="responsive-dialog-title"
         >
             <DialogTitle id="responsive-dialog-title">
-                {'Witaj z powrotem'}
+                {t( 'welcome_back.welcome', { who: localStorage.getItem( 'username' ) } )}
             </DialogTitle>
             <DialogContent>
                 <DialogContentText>
-                Pod twoją nieobecność:
+                    {t( 'welcome_back.label' )}:
                 </DialogContentText>
                 <DialogContentText>
-                Zarobiłeś: 10 dolanów
+                    {t( 'welcome_back.earnings', { earnings: '0' } )}
                 </DialogContentText>
             </DialogContent>
             <DialogActions>

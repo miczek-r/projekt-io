@@ -1,0 +1,37 @@
+{
+    "authorization": {
+        "login": {
+            "title": "login",
+            "description": "If you do not have an account yet,",
+            "description_link": "set one up",
+            "button": "login"
+        },
+        "registration": {
+            "title": "registration",
+            "registration_success": "Successfully registered user.",
+            "description": "If you do have an account,",
+            "description_link": "log in",
+            "button": "register"
+        },
+        "loginField": "login",
+        "passwordField": "password",
+        "emailField": "e-mail"
+    },
+    "city" : {
+        "label": "{{whos}}'s City",
+        "build": "build"
+    },
+    "welcome_back": {
+        "welcome": "Welcome Back {{who}}",
+        "label": "While you were away",
+        "earnings": "You earned: {{earnings}}"
+    },
+    "settings": {
+        "label": "Settings",
+        "darkTheme": "Dark Theme",
+        "lightTheme": "Light Theme",
+        "music": "Music",
+        "english": "English",
+        "polish": "Polish"
+    }
+}
